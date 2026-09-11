@@ -36,7 +36,8 @@ Các lớp là quy tắc về trách nhiệm, không phải lý do tạo thêm c
 - DTO nhận dữ liệu giới hạn trường được phép, không nhận thẳng entity database.
 - Migration database dùng Flyway; không sửa migration đã dùng ở môi trường chung.
 - Quy tắc trùng/chồng lấn cần transaction và cơ chế database phù hợp, được kiểm thử trên PostgreSQL.
-- Bản đầu không cần RabbitMQ/Redis/AI. Chọn xác thực session hoặc token ở RM-003 với chính sách lưu trữ,
-  hết hạn, logout và CSRF phù hợp; không tự thêm JWT chỉ vì dự án mẫu dùng JWT.
+- Bản đầu không cần RabbitMQ/Redis/AI. RM-003 dùng bearer token ngẫu nhiên, lưu hash trong `auth_sessions`,
+  hết hạn sau 8 giờ và revoke khi logout; password dùng BCrypt. Không dùng JWT trong MVP vì token cần revoke phía server.
+  API stateless dùng bearer token nên CSRF của cookie session không áp dụng; phải giữ token ngoài cookie tự gửi và không log token.
 - Tách cấu hình local/test/demo; không hardcode secret. Có .env.example nếu môi trường thực sự dùng .env.
 - RM-002 tạo CI build/test có thật. Đây chưa phải một pipeline đã cài đặt.

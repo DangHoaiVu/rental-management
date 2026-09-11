@@ -1,0 +1,27 @@
+# Build and local tools
+**/target/
+**/node_modules/
+**/dist/
+**/.next/
+**/coverage/
+.idea/
+.vscode/
+*.iml
+*.log
+.DS_Store
+Thumbs.db
+
+# Local secrets and private data
+.env
+.env.*
+!.env.example
+**/application-local.yml
+**/application-local.yaml
+**/application-local.properties
+/private-data/
+/uploads/
+/backups/
+*.pem
+*.key
+
+# Keep Maven Wrapper files tracked when introduced

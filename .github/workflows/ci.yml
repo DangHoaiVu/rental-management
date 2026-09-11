@@ -17,4 +17,5 @@ jobs:
           java-version: '21'
           cache: maven
       - name: Verify backend
-        run: bash backend/mvnw --batch-mode verify
+        working-directory: backend
+        run: bash mvnw --batch-mode verify
